@@ -1,9 +1,12 @@
 // import { cards } from "./data/cards";
 // import { transactions } from "./data/transactions";
 
+export type CardType = 'private' | 'business';
+
 export interface Card {
 	id: string;
 	description: string;
+	cardType: CardType;
 }
 
 export interface Transaction {
@@ -17,7 +20,7 @@ export interface TransactionWithCardId extends Transaction {
 }
 
 export async function getCards(): Promise<Card[]> {
-	const cards = (await import('./data/cards.json')).default;
+	const cards = (await import('./data/cards.json')).default as Card[]; // casting specifically, for mockup purpose.
 
 	return cards;
 }

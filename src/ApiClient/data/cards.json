@@ -1,10 +1,12 @@
 [
 	{
 		"id": "lkmfkl-mlfkm-dlkfm",
-		"description": "Private Card"
+		"description": "Private Card",
+		"cardType": "private"
 	},
 	{
 		"id": "elek-n3lk-4m3lk4",
-		"description": "Business Card"
+		"description": "Business Card",
+		"cardType": "business"
 	}
 ]
