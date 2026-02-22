@@ -1,13 +1,23 @@
-import './AccountOverview.scss';
-import { useState } from 'react';
-import { TransactionFilterInput } from '../components/TransactionFilterInput';
+import { useMemo, useState } from 'react';
+import type { Transaction } from '../ApiClient';
 import { Card } from '../components/Card';
+import { TransactionFilterInput } from '../components/TransactionFilterInput';
 import {
 	TransactionList,
 	TransactionListItem,
 } from '../components/TransactionList';
 import { useCards } from '../hooks/useCards';
 import { useTransactionsByCardId } from '../hooks/useTransactionsById';
+import './AccountOverview.scss';
+
+/** Helper to parse value from input element */
+const parseMinAmount = (value: string): number | null => {
+	const trimmed = value.trim();
+	if (trimmed === '') return null;
+
+	const n = Number(trimmed);
+	return Number.isFinite(n) ? n : null;
+};
 
 const AccountOverview = () => {
 	const { data: cards } = useCards();
@@ -20,11 +30,17 @@ const AccountOverview = () => {
 	const handleSelectCard = (cardId: string) => {
 		setSelectedCardId((prev) => {
 			const next = prev === cardId ? null : cardId;
-			if (next !== prev && next !== null) setAmountFilter(''); // AC for resetting has been interpreted as, if users toggle to show all transactions filter should not be cleared.
+			if (next !== prev && next !== null) setAmountFilter('');
 
 			return next;
 		});
 	};
+
+	const visibleTransactions = useMemo<Transaction[]>(() => {
+		const min = parseMinAmount(amountFilter);
+		if (min === null) return transactionsByCardId;
+		return transactionsByCardId.filter((t) => t.amount >= min);
+	}, [amountFilter, transactionsByCardId]);
 
 	return (
 		<div className="main-layout">
@@ -54,9 +70,9 @@ const AccountOverview = () => {
 				/>
 			</div>
 			<div className="row">
-				{transactionsByCardId.length > 0 ? (
+				{visibleTransactions.length > 0 ? (
 					<TransactionList>
-						{transactionsByCardId.map((visibleTransaction) => {
+						{visibleTransactions.map((visibleTransaction) => {
 							const { description, amount, id } = visibleTransaction;
 							return (
 								<TransactionListItem
