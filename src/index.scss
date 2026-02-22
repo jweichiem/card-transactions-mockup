@@ -1,0 +1,24 @@
+/** Add base styles here */
+@import 'modern-normalize/modern-normalize.css';
+
+:root {
+  --font-family: "Open-Sans", Arial, sans-serif;
+  font-family: var(--font-family);
+  font-weight: 500;
+  line-height: 1.5;
+
+  color-scheme: light dark;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+// Added to ensure override of default User Agent styles
+input,
+button,
+select,
+textarea {
+  font-family: var(--font-family);
+  font-size: 1rem;
+  line-height: 1.25;
+}
