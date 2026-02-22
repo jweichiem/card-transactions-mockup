@@ -80,6 +80,7 @@ const AccountOverview = () => {
 									id={id}
 									description={description}
 									amount={amount}
+									highlight={!!selectedCardId}
 								></TransactionListItem>
 							);
 						})}
