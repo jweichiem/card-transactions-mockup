@@ -1,0 +1,8 @@
+@mixin borders {
+  --border-radius-xs: .25rem;
+  --border-radius-sm: .375rem;
+  --border-radius-md: .5rem;
+  --border-radius-lg: .75rem;
+  --border-radius-xl: 1.25rem;
+  --border-radius-circle: 50%;
+}

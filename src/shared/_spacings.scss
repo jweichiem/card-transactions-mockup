@@ -1,0 +1,52 @@
+@mixin spacings {
+  --spacing-100: .125rem;
+  --spacing-200: .25rem;
+  --spacing-300: .5rem;
+  --spacing-400: .75rem;
+  --spacing-500: 1rem;
+  --spacing-600: 1.25rem;
+  --spacing-700: 1.5rem;
+  --spacing-800: 2rem;
+  --spacing-900: 2.5rem;
+  --spacing-1000: 3rem;
+  --spacing-1100: 4rem;
+  --spacing-1200: 5rem;
+
+  // Component spacing
+  --c-spacing-inline-sm: var(--spacing-400);
+  --c-spacing-inline-md: var(--spacing-400);
+  --c-spacing-inline-lg: var(--spacing-600);
+
+  --c-spacing-block-sm: var(--spacing-300);
+  --c-spacing-block-md: var(--spacing-400);
+  --c-spacing-block-lg: var(--spacing-600);
+
+  // Gap/Gutter spacing
+  --g-spacing-inline-sm: var(--spacing-300);
+  --g-spacing-block-sm: var(--spacing-300);
+
+  --g-spacing-inline-md: var(--spacing-400);
+  --g-spacing-block-md: var(--spacing-400);
+
+  --g-spacing-inline-lg: var(--spacing-500);
+  --g-spacing-block-lg: var(--spacing-500);
+
+  --g-spacing-inline-xl: var(--spacing-600);
+  --g-spacing-block-xl: var(--spacing-600);
+
+  --g-spacing-inline-xl: var(--spacing-700);
+  --g-spacing-block-xl: var(--spacing-700);
+
+  // Layout spacing
+  --l-spacing-inline-sm: var(--spacing-600);
+  --l-spacing-block-sm: var(--spacing-400);
+  --l-spacing-sm: var(--l-spacing-block-sm) var(--l-spacing-inline-sm);
+
+  --l-spacing-inline-md: var(--spacing-700);
+  --l-spacing-block-md: var(--spacing-500);
+  --l-spacing-md: var(--l-spacing-block-md) var(--l-spacing-inline-md);
+
+  --l-spacing-inline-lg: var(--spacing-900);
+  --l-spacing-block-lg: var(--spacing-700);
+  --l-spacing-lg: var(--l-spacing-block-lg) var(--l-spacing-inline-lg);
+}
