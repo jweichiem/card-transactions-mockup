@@ -1,0 +1,30 @@
+.transaction-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  display: block;
+  width: 100%;
+}
+
+.transaction-list-item {
+  padding: var(--c-spacing-block-md) var(--c-spacing-inline-md);
+  margin-bottom: var(--g-spacing-block-md);
+  background: var(--color-neutral-500);
+  color: var(--color-neutral-100);
+  display: flex;
+  border-radius: var(--border-radius-xs);
+
+  &--highlighted {
+    background: var(--color-brand-primary-800);
+    color: var(--color-neutral-100);
+  }
+
+  &__description {
+    margin: 0;
+  }
+
+  &__content {
+    flex-grow: 1;
+    margin-inline-end: var(--c-spacing-inline-md);
+  }
+}
