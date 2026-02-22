@@ -29,7 +29,7 @@ const AccountOverview = () => {
 
 	const handleSelectCard = (cardId: string) => {
 		setSelectedCardId((prev) => {
-			const next = prev === cardId ? null : cardId;
+			const next = cardId;
 			if (next !== prev && next !== null) setAmountFilter('');
 
 			return next;
