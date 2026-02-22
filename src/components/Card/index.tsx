@@ -3,6 +3,7 @@ import './style.scss';
 
 export interface FilterCard extends CardInterface {
 	onClick?: () => void;
+	selectedCardId: string | null;
 }
 
 export const Card: React.FC<FilterCard> = ({
@@ -10,12 +11,14 @@ export const Card: React.FC<FilterCard> = ({
 	cardType,
 	id,
 	onClick,
+	selectedCardId,
 }) => {
 	return (
 		<button
 			type="button"
-			className={`card card--${cardType}`}
+			className={`card card--${cardType} ${selectedCardId === id ? 'card--selected' : ''}`}
 			onClick={onClick}
+			aria-pressed={selectedCardId === id}
 		>
 			<div className="card__header">
 				<h2 className="card__description">{description}</h2>
