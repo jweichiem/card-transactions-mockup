@@ -1,0 +1,35 @@
+.card {
+  border: 0;
+  border-radius: var(--border-radius-xl);
+  padding: var(--c-spacing-inline-lg);
+  text-align: left;
+  width: min(20rem, 50%);
+  min-height: 12.5rem;
+  color: var(--color-static-white);
+  cursor: pointer;
+
+  &--private {
+    background: var(--color-brand-primary-500);
+
+    &:active,
+    &:hover {
+      background: var(--color-brand-primary-600);
+    }
+  }
+
+  &--business {
+    background: var(--color-brand-primary-400);
+
+    &:active,
+    &:hover {
+      background: var(--color-brand-primary-700);
+    }
+  }
+
+  &--selected {
+    background: var(--color-brand-primary-800);
+    color: var(--color-neutral-100);
+    outline: var(--spacing-100) solid var(--color-brand-primary-100);
+    outline-offset: var(--spacing-200);
+  }
+}
