@@ -2,13 +2,20 @@ import './AccountOverview.scss';
 import { useState } from 'react';
 import { TransactionFilterInput } from '../components/TransactionFilterInput';
 import { Card } from '../components/Card';
+import {
+	TransactionList,
+	TransactionListItem,
+} from '../components/TransactionList';
 import { useCards } from '../hooks/useCards';
+import { useTransactionsByCardId } from '../hooks/useTransactionsById';
 
 const AccountOverview = () => {
 	const { data: cards } = useCards();
-
 	const [amountFilter, setAmountFilter] = useState<string>('');
 	const [selectedCardId, setSelectedCardId] = useState<string | null>(null);
+
+	const { data: transactionsByCardId } =
+		useTransactionsByCardId(selectedCardId);
 
 	const handleSelectCard = (cardId: string) => {
 		setSelectedCardId((prev) => {
@@ -45,6 +52,27 @@ const AccountOverview = () => {
 						},
 					}}
 				/>
+			</div>
+			<div className="row">
+				{transactionsByCardId.length > 0 ? (
+					<TransactionList>
+						{transactionsByCardId.map((visibleTransaction) => {
+							const { description, amount, id } = visibleTransaction;
+							return (
+								<TransactionListItem
+									key={id + selectedCardId}
+									id={id}
+									description={description}
+									amount={amount}
+								></TransactionListItem>
+							);
+						})}
+					</TransactionList>
+				) : (
+					<h4>
+						Click a card to show transactions made through the selected card.
+					</h4>
+				)}
 			</div>
 		</div>
 	);
