@@ -8,13 +8,30 @@ const AccountOverview = () => {
 	const { data: cards } = useCards();
 
 	const [amountFilter, setAmountFilter] = useState<string>('');
+	const [selectedCardId, setSelectedCardId] = useState<string | null>(null);
+
+	const handleSelectCard = (cardId: string) => {
+		setSelectedCardId((prev) => {
+			const next = prev === cardId ? null : cardId;
+			if (next !== prev && next !== null) setAmountFilter(''); // AC for resetting has been interpreted as, if users toggle to show all transactions filter should not be cleared.
+
+			return next;
+		});
+	};
 
 	return (
 		<div className="main-layout">
 			<h1>Account Overview</h1>
 			<div className="row">
 				{cards.map((card) => (
-					<Card key={card.id} {...card} onClick={() => {}} />
+					<Card
+						key={card.id}
+						{...card}
+						selectedCardId={selectedCardId}
+						onClick={() => {
+							handleSelectCard(card.id);
+						}}
+					/>
 				))}
 			</div>
 			<div className="row">
