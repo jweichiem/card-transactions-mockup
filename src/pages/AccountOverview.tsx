@@ -1,14 +1,14 @@
 import { useMemo, useState } from 'react';
-import type { Transaction } from '../ApiClient';
+import type { TransactionWithCardId } from '../ApiClient';
 import { Card } from '../components/Card';
 import { TransactionFilterInput } from '../components/TransactionFilterInput';
+import { useAllTransactions } from '../hooks/useAllTransactions';
+import { useCards } from '../hooks/useCards';
+import './AccountOverview.scss';
 import {
 	TransactionList,
 	TransactionListItem,
 } from '../components/TransactionList';
-import { useCards } from '../hooks/useCards';
-import { useTransactionsByCardId } from '../hooks/useTransactionsById';
-import './AccountOverview.scss';
 
 /** Helper to parse value from input element */
 const parseMinAmount = (value: string): number | null => {
@@ -21,26 +21,31 @@ const parseMinAmount = (value: string): number | null => {
 
 const AccountOverview = () => {
 	const { data: cards } = useCards();
-	const [amountFilter, setAmountFilter] = useState<string>('');
-	const [selectedCardId, setSelectedCardId] = useState<string | null>(null);
 
-	const { data: transactionsByCardId } =
-		useTransactionsByCardId(selectedCardId);
+	const [amountFilter, setAmountFilter] = useState<string>('');
+
+	const [selectedCardId, setSelectedCardId] = useState<string | null>(null);
+	const { data: allTransactions } = useAllTransactions();
+
+	const filteredTransactions = useMemo<TransactionWithCardId[]>(() => {
+		if (selectedCardId === null) return allTransactions;
+		return allTransactions;
+	}, [allTransactions, selectedCardId]);
+
+	const visibleTransactions = useMemo<TransactionWithCardId[]>(() => {
+		const min = parseMinAmount(amountFilter);
+		if (min === null) return filteredTransactions;
+		return filteredTransactions.filter((t) => t.amount >= min);
+	}, [amountFilter, filteredTransactions]);
 
 	const handleSelectCard = (cardId: string) => {
 		setSelectedCardId((prev) => {
-			const next = cardId;
-			if (next !== prev && next !== null) setAmountFilter('');
+			const next = prev === cardId ? null : cardId;
+			if (next !== prev && next !== null) setAmountFilter(''); // AC for resetting has been interpreted as, if users toggle to show all transactions filter should not be cleared.
 
 			return next;
 		});
 	};
-
-	const visibleTransactions = useMemo<Transaction[]>(() => {
-		const min = parseMinAmount(amountFilter);
-		if (min === null) return transactionsByCardId;
-		return transactionsByCardId.filter((t) => t.amount >= min);
-	}, [amountFilter, transactionsByCardId]);
 
 	return (
 		<div className="main-layout">
@@ -50,10 +55,10 @@ const AccountOverview = () => {
 					<Card
 						key={card.id}
 						{...card}
-						selectedCardId={selectedCardId}
 						onClick={() => {
 							handleSelectCard(card.id);
 						}}
+						selectedCardId={selectedCardId}
 					/>
 				))}
 			</div>
@@ -73,22 +78,20 @@ const AccountOverview = () => {
 				{visibleTransactions.length > 0 ? (
 					<TransactionList>
 						{visibleTransactions.map((visibleTransaction) => {
-							const { description, amount, id } = visibleTransaction;
+							const { description, amount, id, cardId } = visibleTransaction;
 							return (
 								<TransactionListItem
-									key={id + selectedCardId}
+									key={id + cardId}
 									id={id}
 									description={description}
 									amount={amount}
-									highlight={!!selectedCardId}
+									highlight={selectedCardId === cardId}
 								></TransactionListItem>
 							);
 						})}
 					</TransactionList>
 				) : (
-					<h4>
-						Click a card to show transactions made through the selected card.
-					</h4>
+					<h4>No transactions matching current filter found.</h4>
 				)}
 			</div>
 		</div>

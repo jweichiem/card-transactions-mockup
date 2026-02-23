@@ -15,10 +15,6 @@ export interface Transaction {
 	amount: number;
 }
 
-export interface TransactionWithCardId extends Transaction {
-	cardId: string;
-}
-
 export async function getCards(): Promise<Card[]> {
 	const cards = (await import('./data/cards.json')).default as Card[]; // casting specifically, for mockup purpose.
 
@@ -37,4 +33,19 @@ export async function getTransactionsByCardId(
 	}
 
 	throw new Error('cardId not found');
+}
+
+export interface TransactionWithCardId extends Transaction {
+	cardId: string;
+}
+
+export async function getAllTransactions(): Promise<TransactionWithCardId[]> {
+	const transactionsByCard: Record<string, Transaction[]> = (
+		await import('./data/transactions.json')
+	).default;
+
+	// Iterate by cardId and flatten to include cardId as key.
+	return Object.entries(transactionsByCard).flatMap(([cardId, txs]) =>
+		txs.map((t) => ({ ...t, cardId })),
+	);
 }
