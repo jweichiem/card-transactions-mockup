@@ -1,0 +1,12 @@
+{
+  "name": "@jweichiem-mockup/cards",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "echo 'cards workspace placeholder'",
+    "build": "tsc -p tsconfig.json",
+    "lint": "biome lint src",
+    "test": "vitest run --passWithNoTests"
+  }
+}
