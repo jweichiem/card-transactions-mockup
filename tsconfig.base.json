@@ -1,11 +1,10 @@
 {
   "compilerOptions": {
-    "baseUrl": ".",
     "paths": {
-      "@jweichiem-mockup/shared-types": ["packages/shared-types/src/index.ts"],
-      "@jweichiem-mockup/api-client": ["packages/api-client/src/index.ts"],
-      "@jweichiem-mockup/api-react": ["packages/api-react/src/index.ts"],
-      "@jweichiem-mockup/api-server/*": ["packages/api-server/src/*"]
+      "@jweichiem-mockup/shared-types": ["./packages/shared-types/src/index.ts"],
+      "@jweichiem-mockup/api-client": ["./packages/api-client/src/index.ts"],
+      "@jweichiem-mockup/api-react": ["./packages/api-react/src/index.ts"],
+      "@jweichiem-mockup/api-server/*": ["./packages/api-server/src/*"]
     },
     "target": "ES2022",
     "module": "ESNext",

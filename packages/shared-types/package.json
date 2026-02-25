@@ -9,5 +9,10 @@
     "build": "tsc -p tsconfig.json",
     "lint": "biome lint src",
     "test": "vitest run --passWithNoTests"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "2.4.3",
+    "typescript": "~5.9.3",
+    "vitest": "^4.0.0"
   }
 }

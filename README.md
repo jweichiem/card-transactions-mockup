@@ -1,27 +1,36 @@
-# Banking Mockup Monorepo
+# Banking Mockup
 
-Workspace monorepo using Yarn workspaces.
+This project currently runs as the original simplified mockup flow:
+- one frontend app (`apps/account`)
+- one mock API server (`packages/api-server`)
 
-## Workspaces
+The extra app workspaces (`apps/cards`, `apps/payments`) are placeholders and are not required to run the mockup.
 
-- `apps/account`: account overview frontend (Vite + React)
-- `apps/payments`: placeholder microfrontend workspace
-- `apps/cards`: placeholder microfrontend workspace
-- `packages/api-server`: Express mock API server
-- `packages/api-client`: typed API SDK for frontends
-- `packages/api-react`: reusable React hooks over `api-client`
-- `packages/shared-types`: shared API DTO contracts
+## Run locally
 
-## Root scripts
+From the repository root:
 
-- `yarn dev:account`
-- `yarn dev:api`
-- `yarn dev` (runs account + api server in parallel)
-- `yarn build`
-- `yarn lint`
-- `yarn test`
+```bash
+yarn install
+yarn dev
+```
 
-## Notes
+`yarn dev` starts both services:
+- account frontend (Vite): http://localhost:5173
+- mock API server (Express): http://localhost:3001
 
-This repo expects `yarn@1.22.22`.
-If dependencies are missing locally, run `yarn install` from the repository root.
+Open http://localhost:5173 in your browser.
+
+## Optional commands
+
+```bash
+yarn dev:account   # frontend only
+yarn dev:api       # API only
+yarn build
+yarn lint
+yarn test
+```
+
+## Requirements
+
+- `yarn@1.22.22`

@@ -1,9 +1,10 @@
 import { Router } from 'express';
+import type { Request, Response } from 'express';
 import { getTransactionsData } from '../data/loaders.js';
 
 export const transactionsRouter = Router();
 
-transactionsRouter.get('/:cardId/transactions', (req: any, res: any) => {
+transactionsRouter.get('/:cardId/transactions', (req: Request, res: Response) => {
   try {
     const data = getTransactionsData();
     const { cardId } = req.params;

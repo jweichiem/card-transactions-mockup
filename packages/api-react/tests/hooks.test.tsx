@@ -1,8 +1,79 @@
-import { renderHook, waitFor } from '@testing-library/react';
-import { describe, expect, it, vi } from 'vitest';
+import { act } from 'react';
+import { createRoot } from 'react-dom/client';
+import { afterEach, describe, expect, it, vi } from 'vitest';
 import type { ApiClient } from '@jweichiem-mockup/api-client';
 import { useCards } from '../src/hooks/useCards.js';
 import { useTransactionsByCardId } from '../src/hooks/useTransactionsByCardId.js';
+
+type HookResult<T> = {
+  result: { current: T };
+};
+
+const cleanupCallbacks: Array<() => void> = [];
+const globalWithActEnv = globalThis as typeof globalThis & {
+  IS_REACT_ACT_ENVIRONMENT?: boolean;
+};
+globalWithActEnv.IS_REACT_ACT_ENVIRONMENT = true;
+
+const waitFor = async (
+  assertion: () => void,
+  timeoutMs = 1000,
+  intervalMs = 10
+) => {
+  const deadline = Date.now() + timeoutMs;
+  let lastError: unknown;
+
+  while (Date.now() < deadline) {
+    try {
+      assertion();
+      return;
+    } catch (error) {
+      lastError = error;
+    }
+
+    await act(async () => {
+      await new Promise<void>((resolve) => {
+        setTimeout(resolve, intervalMs);
+      });
+    });
+  }
+
+  if (lastError instanceof Error) {
+    throw lastError;
+  }
+  throw new Error('waitFor timed out');
+};
+
+const renderHook = <T,>(hook: () => T): HookResult<T> => {
+  const container = document.createElement('div');
+  document.body.append(container);
+  const root = createRoot(container);
+  const result = { current: undefined as T };
+
+  const HookProbe = () => {
+    result.current = hook();
+    return null;
+  };
+
+  act(() => {
+    root.render(<HookProbe />);
+  });
+
+  cleanupCallbacks.push(() => {
+    act(() => {
+      root.unmount();
+    });
+    container.remove();
+  });
+
+  return { result };
+};
+
+afterEach(() => {
+  for (const cleanup of cleanupCallbacks.splice(0)) {
+    cleanup();
+  }
+});
 
 describe('api-react hooks', () => {
   it('useCards handles loading and success', async () => {
