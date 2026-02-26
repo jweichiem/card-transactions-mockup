@@ -31,6 +31,29 @@ yarn lint
 yarn test
 ```
 
+## Testing
+
+Testing is run with Vitest in each workspace. From the repo root:
+
+```bash
+yarn test
+```
+
+That command runs `yarn workspaces run test`, which executes each workspace's `test` script (for example `vitest run`, and some packages use `--passWithNoTests`).
+
+To run tests for a single workspace:
+
+```bash
+yarn workspace @jweichiem-mockup/account test
+yarn workspace @jweichiem-mockup/api-server test
+```
+
+To run a specific test file or pattern, pass arguments through to Vitest:
+
+```bash
+yarn workspace @jweichiem-mockup/account test -- Card.test.tsx
+```
+
 ## Requirements
 
 - `yarn@1.22.22`

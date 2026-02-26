@@ -1,22 +1,25 @@
-import { Router } from 'express';
-import type { Request, Response } from 'express';
+import express from 'express';
+import type { Request, Response } from 'express-serve-static-core';
 import { getTransactionsData } from '../data/loaders.js';
 
-export const transactionsRouter = Router();
+export const transactionsRouter = express.Router();
 
-transactionsRouter.get('/:cardId/transactions', (req: Request, res: Response) => {
-  try {
-    const data = getTransactionsData();
-    const { cardId } = req.params;
-    const transactions = data[cardId];
+transactionsRouter.get(
+	'/:cardId/transactions',
+	(req: Request<{ cardId: string }>, res: Response) => {
+		try {
+			const data = getTransactionsData();
+			const { cardId } = req.params;
+			const transactions = data[cardId];
 
-    if (!transactions) {
-      res.status(404).json({ message: `No transactions for card ${cardId}` });
-      return;
-    }
+			if (!transactions) {
+				res.status(404).json({ message: `No transactions for card ${cardId}` });
+				return;
+			}
 
-    res.status(200).json(transactions);
-  } catch (_error) {
-    res.status(500).json({ message: 'Failed to load transactions' });
-  }
-});
+			res.status(200).json(transactions);
+		} catch (_error) {
+			res.status(500).json({ message: 'Failed to load transactions' });
+		}
+	},
+);

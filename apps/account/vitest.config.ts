@@ -1,6 +1,6 @@
 import { fileURLToPath, URL } from 'node:url';
 import react from '@vitejs/plugin-react';
-import { defineConfig } from 'vite';
+import { defineConfig } from 'vitest/config';
 
 export default defineConfig({
 	resolve: {
@@ -14,6 +14,12 @@ export default defineConfig({
 			'@jweichiem-mockup/api-react': fileURLToPath(
 				new URL('../../packages/api-react/src/index.ts', import.meta.url),
 			),
+			'@jweichiem-mockup/api-server-test-fixtures': fileURLToPath(
+				new URL(
+					'../../packages/api-server/tests/fixtures/index.ts',
+					import.meta.url,
+				),
+			),
 		},
 	},
 	plugins: [
@@ -23,4 +29,9 @@ export default defineConfig({
 			},
 		}),
 	],
+	test: {
+		environment: 'jsdom',
+		include: ['src/**/*.test.tsx'],
+		setupFiles: ['./tests/setup.ts'],
+	},
 });
