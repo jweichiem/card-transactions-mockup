@@ -1,7 +1,10 @@
 {
 	"files": [],
 	"references": [
-		{ "path": "./tsconfig.app.json" },
-		{ "path": "./tsconfig.node.json" }
+		{ "path": "./apps/account" },
+		{ "path": "./packages/shared-types" },
+		{ "path": "./packages/api-client" },
+		{ "path": "./packages/api-react" },
+		{ "path": "./packages/api-server" }
 	]
 }

@@ -1,0 +1,29 @@
+{
+	"name": "@jweichiem-mockup/api-server",
+	"version": "1.0.0",
+	"private": true,
+	"type": "module",
+	"main": "src/index.ts",
+	"scripts": {
+		"dev": "tsx watch src/index.ts",
+		"build": "tsc -p tsconfig.build.json",
+		"lint": "biome lint src tests",
+		"test": "vitest run"
+	},
+	"dependencies": {
+		"@jweichiem-mockup/shared-types": "1.0.0",
+		"cors": "^2.8.5",
+		"express": "^5.1.0"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "2.4.3",
+		"@types/cors": "^2.8.19",
+		"@types/express": "^5.0.5",
+		"@types/node": "^24.10.1",
+		"@types/supertest": "^6.0.3",
+		"supertest": "^7.1.4",
+		"tsx": "^4.20.6",
+		"typescript": "~5.9.3",
+		"vitest": "^4.0.0"
+	}
+}

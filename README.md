@@ -1,19 +1,59 @@
 # Banking Mockup
 
-- Project is configured with `React` + `Typescript` through Vite with React Compiler.
-- `eslint` has been replaced with `biomejs` to simplify config for linting and formatting and reduce dependencies.
-- `sass` has been installed to enable sass.
-- `yarn@1.22.22` has been used for package management.
+This project currently runs as the original simplified mockup flow:
+- one frontend app (`apps/account`)
+- one mock API server (`packages/api-server`)
 
+The extra app workspaces (`apps/cards`, `apps/payments`) are placeholders and are not required to run the mockup.
 
-## Linting, formatting and assist
+## Run locally
 
-Biome has been configured with some basic additions to keep the linting/formatting simple. It can be swapped out for eslint if preferred.
+From the repository root:
 
-Make sure your code editor has the biome extension to be able to take advantage of it, you can also configure your code editor to format on save.
+```bash
+yarn install
+yarn dev
+```
 
-tsconfig has been left with the default config from the base Vite template.
+`yarn dev` starts both services:
+- account frontend (Vite): http://localhost:5173
+- mock API server (Express): http://localhost:3001
 
-## Task
+Open http://localhost:5173 in your browser.
 
-The purpose of this task is to build a card and transactions overview page. The user should be able to select one of the cards, see it's transactions and be able to filter the transactions based on the amount.
+## Optional commands
+
+```bash
+yarn dev:account   # frontend only
+yarn dev:api       # API only
+yarn build
+yarn lint
+yarn test
+```
+
+## Testing
+
+Testing is run with Vitest in each workspace. From the repo root:
+
+```bash
+yarn test
+```
+
+That command runs `yarn workspaces run test`, which executes each workspace's `test` script (for example `vitest run`, and some packages use `--passWithNoTests`).
+
+To run tests for a single workspace:
+
+```bash
+yarn workspace @jweichiem-mockup/account test
+yarn workspace @jweichiem-mockup/api-server test
+```
+
+To run a specific test file or pattern, pass arguments through to Vitest:
+
+```bash
+yarn workspace @jweichiem-mockup/account test -- Card.test.tsx
+```
+
+## Requirements
+
+- `yarn@1.22.22`
