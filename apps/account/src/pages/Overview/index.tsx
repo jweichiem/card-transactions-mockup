@@ -1,13 +1,13 @@
 import { useCards, useTransactionsByCardId } from '@jweichiem-mockup/api-react';
 import type { Transaction } from '@jweichiem-mockup/shared-types';
 import { useMemo, useState } from 'react';
-import { Card } from '../components/Card';
-import { TransactionFilterInput } from '../components/TransactionFilterInput';
+import { Card } from '../../components/Card';
+import { TransactionFilterInput } from '../../components/TransactionFilterInput';
 import {
 	TransactionList,
 	TransactionListItem,
-} from '../components/TransactionList';
-import './AccountOverview.scss';
+} from '../../components/TransactionList';
+import './style.scss';
 
 /** Helper to parse value from input element */
 const parseMinAmount = (value: string): number | null => {
@@ -18,7 +18,7 @@ const parseMinAmount = (value: string): number | null => {
 	return Number.isFinite(n) ? n : null;
 };
 
-const AccountOverview = () => {
+const Overview = () => {
 	const { data: cards } = useCards();
 	const [amountFilter, setAmountFilter] = useState<string>('');
 	const [selectedCardId, setSelectedCardId] = useState<string | null>(null);
@@ -94,4 +94,4 @@ const AccountOverview = () => {
 	);
 };
 
-export default AccountOverview;
+export default Overview;

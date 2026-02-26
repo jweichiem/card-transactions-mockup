@@ -11,7 +11,7 @@ React microfrontend for the account overview experience.
 ## Current Structure
 
 - `src/index.tsx`: app bootstrap and root render.
-- `src/pages/AccountOverview.tsx`: main screen composition and local UI state.
+- `src/pages/AccountOverview/index.tsx`: main screen composition and local UI state.
 - `src/components/`: presentational components for cards, filter input, and transaction list.
 - `src/shared/`: local design tokens and style primitives for this app.
 - `src/index.scss`: global app styles.

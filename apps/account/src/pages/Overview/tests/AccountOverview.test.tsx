@@ -5,7 +5,7 @@ import {
 import { screen } from '@testing-library/dom';
 import { fireEvent, render, waitFor } from '@testing-library/react';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
-import AccountOverview from '../AccountOverview';
+import AccountOverview from '..';
 
 beforeEach(() => {
 	globalThis.fetch = vi.fn(async (input: RequestInfo | URL) => {
