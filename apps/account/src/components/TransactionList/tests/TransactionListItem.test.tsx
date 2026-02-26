@@ -11,6 +11,20 @@ describe('TransactionListItem', () => {
 		expect(screen.getByText('12€')).toBeTruthy();
 	});
 
+	it('renders with custom currency defined', () => {
+		render(
+			<TransactionListItem
+				id="tx-1"
+				description="Coffee"
+				amount={12}
+				currency="£"
+			/>,
+		);
+
+		expect(screen.getByText('Coffee')).toBeTruthy();
+		expect(screen.getByText('12£')).toBeTruthy();
+	});
+
 	it('applies highlight class when highlight is true', () => {
 		const { container } = render(
 			<TransactionListItem
