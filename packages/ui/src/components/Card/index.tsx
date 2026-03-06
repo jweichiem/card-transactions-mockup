@@ -3,7 +3,7 @@ import './style.scss';
 
 export interface CardProps extends CardInterface {
   onClick?: () => void;
-  selectedCardId: string | null;
+  isSelected: boolean;
 }
 
 export const Card: React.FC<CardProps> = ({
@@ -11,14 +11,14 @@ export const Card: React.FC<CardProps> = ({
   cardType,
   id,
   onClick,
-  selectedCardId,
+  isSelected,
 }) => {
   return (
     <button
       type="button"
-      className={`card card--${cardType} ${selectedCardId === id ? 'card--selected' : ''}`}
+      className={`card card--${cardType} ${isSelected ? 'card--selected' : ''}`}
       onClick={onClick}
-      aria-pressed={selectedCardId === id}
+      aria-pressed={isSelected}
     >
       <div className="card__header">
         <h2 className="card__description">{description}</h2>

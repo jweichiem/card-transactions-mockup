@@ -17,7 +17,7 @@ const meta = {
 				{...args}
 				onClick={() => {
 					updateArgs({
-						selectedCardId: args.selectedCardId === args.id ? null : args.id,
+						isSelected: !args.isSelected,
 					});
 				}}
 			/>

@@ -14,7 +14,7 @@ describe('Card', () => {
 				id="card-1"
 				description="Private Card"
 				cardType="private"
-				selectedCardId={null}
+				isSelected={false}
 			/>,
 		);
 
@@ -29,7 +29,7 @@ describe('Card', () => {
 				id="card-1"
 				description="Private Card"
 				cardType="private"
-				selectedCardId={null}
+				isSelected={false}
 			/>,
 		);
 
@@ -42,7 +42,7 @@ describe('Card', () => {
 				id="card-1"
 				description="Private Card"
 				cardType="private"
-				selectedCardId="card-1"
+				isSelected
 			/>,
 		);
 

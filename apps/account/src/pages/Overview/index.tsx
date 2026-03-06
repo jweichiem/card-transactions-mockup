@@ -49,7 +49,7 @@ const Overview = () => {
 					<Card
 						key={card.id}
 						{...card}
-						selectedCardId={selectedCardId}
+						isSelected={selectedCardId === card.id}
 						onClick={() => {
 							handleSelectCard(card.id);
 						}}
