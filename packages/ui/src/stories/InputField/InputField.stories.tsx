@@ -4,11 +4,11 @@ import { commonFieldArgTypes } from '../common-args.js';
 import { inputFieldBaseArgs, inputFieldWithValueArgs } from './args.js';
 
 const meta = {
-  title: 'Components/InputField',
-  component: InputField,
-  tags: ['autodocs'],
-  argTypes: commonFieldArgTypes,
-  args: inputFieldBaseArgs,
+	title: 'Components/InputField',
+	component: InputField,
+	tags: ['autodocs'],
+	argTypes: commonFieldArgTypes,
+	args: inputFieldBaseArgs,
 } satisfies Meta<typeof InputField>;
 
 export default meta;
@@ -18,5 +18,5 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {};
 
 export const WithValue: Story = {
-  args: inputFieldWithValueArgs,
+	args: inputFieldWithValueArgs,
 };
