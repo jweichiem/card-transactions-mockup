@@ -3,6 +3,7 @@
 This project currently runs as the original simplified mockup flow:
 - one frontend app (`apps/account`)
 - one mock API server (`packages/api-server`)
+- one shared UI package for design tokens/components (`packages/ui`)
 
 The extra app workspaces (`apps/cards`, `apps/payments`) are placeholders and are not required to run the mockup.
 

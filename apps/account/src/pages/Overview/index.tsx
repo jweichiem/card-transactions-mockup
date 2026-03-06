@@ -1,7 +1,7 @@
 import { useCards, useTransactionsByCardId } from '@jweichiem-mockup/api-react';
 import type { Transaction } from '@jweichiem-mockup/shared-types';
+import { Card } from '@jweichiem-mockup/ui';
 import { useMemo, useState } from 'react';
-import { Card } from '../../components/Card';
 import { TransactionFilterInput } from '../../components/TransactionFilterInput';
 import {
 	TransactionList,

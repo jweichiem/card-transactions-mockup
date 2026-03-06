@@ -1,8 +1,9 @@
-@use './shared/design-tokens' as dt;
-@use './shared/layout.scss' as *;
+@use '@jweichiem-mockup/ui-styles/design-tokens' as dt;
+@use '@jweichiem-mockup/ui-styles/layout';
+@use '@jweichiem-mockup/ui-styles/components';
 @import 'modern-normalize/modern-normalize.css';
 
-:root {
+#account-overview {
   --font-family: "Open-Sans", Arial, sans-serif;
   font-family: var(--font-family);
   font-weight: 500;
@@ -19,34 +20,34 @@
 
   color: var(--color-text-primary);
   background: var(--color-neutral-800);
-}
 
-// Added to ensure override of default User Agent styles
-input,
-button,
-select,
-textarea {
-  font-family: var(--font-family);
-  font-size: 1rem;
-  line-height: 1.25;
-}
-
-a {
-  font-weight: 500;
-  text-decoration: inherit;
-  color: var(--color-text-brand-primary);
-
-  &:hover {
-    color: var(--color-text-brand-primary-hover);
+  // Added to ensure override of default User Agent styles
+  input,
+  button,
+  select,
+  textarea {
+    font-family: var(--font-family);
+    font-size: 1rem;
+    line-height: 1.25;
   }
 
-  &:active {
-    color: var(--color-text-brand-primary-pressed);
+  a {
+    font-weight: 500;
+    text-decoration: inherit;
+    color: var(--color-text-brand-primary);
+
+    &:hover {
+      color: var(--color-text-brand-primary-hover);
+    }
+
+    &:active {
+      color: var(--color-text-brand-primary-pressed);
+    }
   }
 }
 
 @media (prefers-color-scheme: dark) {
-  :root {
+  #account-overview {
     @include dt.dark-mode-colors();
   }
 }

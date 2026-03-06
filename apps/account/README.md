@@ -11,10 +11,9 @@ React microfrontend for the account overview experience.
 ## Current Structure
 
 - `src/index.tsx`: app bootstrap and root render.
-- `src/pages/AccountOverview/index.tsx`: main screen composition and local UI state.
-- `src/components/`: presentational components for cards, filter input, and transaction list.
-- `src/shared/`: local design tokens and style primitives for this app.
-- `src/index.scss`: global app styles.
+- `src/pages/Overview/index.tsx`: main screen composition and local UI state.
+- `src/components/`: app-specific components for the amount filter and transaction list.
+- `src/index.scss`: imports normalize and shared design-system styles.
 - `vite.config.ts`: Vite configuration.
 - `tsconfig*.json`: TypeScript project configuration split for app/node contexts.
 
@@ -22,6 +21,7 @@ React microfrontend for the account overview experience.
 
 - `@jweichiem-mockup/api-react` for data fetching hooks.
 - `@jweichiem-mockup/shared-types` for shared DTO typing.
+- `@jweichiem-mockup/ui` for shared design tokens and card UI.
 
 ## Scripts
 

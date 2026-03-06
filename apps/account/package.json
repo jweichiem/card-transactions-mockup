@@ -12,6 +12,7 @@
 	"dependencies": {
 		"@jweichiem-mockup/api-react": "1.0.0",
 		"@jweichiem-mockup/shared-types": "1.0.0",
+		"@jweichiem-mockup/ui": "1.0.0",
 		"modern-normalize": "^3.0.1",
 		"react": "^19.2.0",
 		"react-dom": "^19.2.0"

@@ -1,3 +1,5 @@
+import { InputField } from '@jweichiem-mockup/ui';
+
 export interface TransactionFilterInputProps {
 	id: string;
 	label: string;
@@ -20,14 +22,13 @@ export const TransactionFilterInput: React.FC<TransactionFilterInputProps> = ({
 				{label}
 			</label>
 			<div className="transaction-filter__field-wrapper">
-				<input
-					name={id}
+				<InputField
 					id={id}
-					className="transaction-filter__input"
+					name={id}
 					type={type}
 					value={value}
 					inputMode="numeric"
-					{...inputAttributes}
+					inputAttributes={inputAttributes}
 				/>
 			</div>
 		</div>

@@ -14,6 +14,12 @@ export default defineConfig({
 			'@jweichiem-mockup/api-react': fileURLToPath(
 				new URL('../../packages/api-react/src/index.ts', import.meta.url),
 			),
+			'@jweichiem-mockup/ui': fileURLToPath(
+				new URL('../../packages/ui/src/index.ts', import.meta.url),
+			),
+			'@jweichiem-mockup/ui-styles': fileURLToPath(
+				new URL('../../packages/ui/src/styles/', import.meta.url),
+			),
 			'@jweichiem-mockup/api-server-test-fixtures': fileURLToPath(
 				new URL(
 					'../../packages/api-server/tests/fixtures/index.ts',

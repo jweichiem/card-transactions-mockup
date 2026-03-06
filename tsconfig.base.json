@@ -6,6 +6,8 @@
 			],
 			"@jweichiem-mockup/api-client": ["./packages/api-client/src/index.ts"],
 			"@jweichiem-mockup/api-react": ["./packages/api-react/src/index.ts"],
+			"@jweichiem-mockup/ui": ["./packages/ui/src/index.ts"],
+			"@jweichiem-mockup/ui/*": ["./packages/ui/src/*"],
 			"@jweichiem-mockup/api-server/*": ["./packages/api-server/src/*"],
 			"@jweichiem-mockup/api-server-test-fixtures": [
 				"./packages/api-server/tests/fixtures/index.ts"
