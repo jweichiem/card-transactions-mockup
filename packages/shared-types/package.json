@@ -7,7 +7,7 @@
 	"types": "src/index.ts",
 	"scripts": {
 		"build": "tsc -p tsconfig.json",
-		"lint": "biome lint src",
+		"lint": "biome check src --write",
 		"test": "vitest run --passWithNoTests"
 	},
 	"devDependencies": {

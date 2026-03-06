@@ -7,7 +7,7 @@
 	"types": "src/index.ts",
 	"scripts": {
 		"build": "tsc -p tsconfig.build.json",
-		"lint": "biome lint src",
+		"lint": "biome check src --write",
 		"test": "vitest run",
 		"storybook": "storybook dev -p 6006",
 		"build-storybook": "storybook build"
