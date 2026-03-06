@@ -3,7 +3,7 @@ import { createRoot, hydrateRoot, type Root } from 'react-dom/client';
 import { Footer } from './components/Footer.js';
 import { Header } from './components/Header.js';
 import type { NavigationMountOptions } from './types.js';
-import './styles.scss';
+import './index.scss';
 
 interface Unmountable {
 	unmount: () => void;

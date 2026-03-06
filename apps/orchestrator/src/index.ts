@@ -1,4 +1,4 @@
-import './style.css';
+import './style.scss';
 import { accountRemoteOrigin, defaultRoute, navRemoteOrigin } from './config';
 import { getOrchestratorRoots } from './dom';
 import { startOrchestrator } from './orchestrator';

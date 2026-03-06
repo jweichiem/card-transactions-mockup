@@ -1,8 +1,8 @@
 import { cleanup, render, screen } from '@testing-library/react';
 import { afterEach, describe, expect, it, vi } from 'vitest';
-import { Footer } from '../components/Footer.js';
-import { Header } from '../components/Header.js';
-import { renderNavigationShell } from '../ssr.js';
+import { Footer } from '../Footer.js';
+import { Header } from '../Header.js';
+import { renderNavigationShell } from '../../ssr.js';
 
 afterEach(() => {
 	cleanup();

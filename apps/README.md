@@ -8,6 +8,7 @@ Each folder in `apps/` is an isolated microfrontend workspace.
 - Use shared API hooks from `@jweichiem-mockup/api-react` for cards/transactions data.
 - Do not import source files from another app directly.
 - The orchestrator should consume app entry contracts over remote origins in integration mode.
+- Global/base styles belong to the orchestrator; microfrontends should scope styles to their host roots/components.
 - Reusable DTOs should come from `@jweichiem-mockup/shared-types`.
 - Shared server access should go through `@jweichiem-mockup/api-client` (or `api-react` for React apps).
 
