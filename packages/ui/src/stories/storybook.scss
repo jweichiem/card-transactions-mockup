@@ -1,0 +1,26 @@
+@use '../styles/design-tokens' as dt;
+
+#storybook-root {
+  --font-family: "Open-Sans", Arial, sans-serif;
+  font-family: var(--font-family);
+  width: 100%;
+
+  @include dt.spacings();
+  @include dt.borders();
+  @include dt.light-mode-colors();
+
+  color: var(--color-text-primary);
+  background: var(--color-neutral-800);
+  padding: var(--l-spacing-sm);
+  min-height: 100vh;
+}
+
+@media (prefers-color-scheme: dark) {
+  #storybook-root {
+    @include dt.dark-mode-colors();
+  }
+}
+
+* {
+  box-sizing: border-box;
+}

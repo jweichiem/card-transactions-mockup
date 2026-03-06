@@ -24,3 +24,5 @@ dist-ssr
 *.sw?
 TASK.md
 task-example.png
+*storybook.log
+storybook-static

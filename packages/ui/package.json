@@ -7,8 +7,10 @@
   "types": "src/index.ts",
   "scripts": {
     "build": "tsc -p tsconfig.build.json",
-    "lint": "biome lint src tests",
-    "test": "vitest run"
+    "lint": "biome lint src",
+    "test": "vitest run",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
   },
   "dependencies": {
     "@jweichiem-mockup/shared-types": "1.0.0",
@@ -23,6 +25,8 @@
     "@types/react": "^19.2.7",
     "jsdom": "^27.2.0",
     "typescript": "~5.9.3",
-    "vitest": "^4.0.0"
+    "vitest": "^4.0.0",
+    "storybook": "^10.2.16",
+    "@storybook/react-vite": "^10.2.16"
   }
 }
