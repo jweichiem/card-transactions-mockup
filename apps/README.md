@@ -7,6 +7,7 @@ Each folder in `apps/` is an isolated microfrontend workspace.
 - Keep routes isolated to the app workspace; no direct cross-app route imports.
 - Use shared API hooks from `@jweichiem-mockup/api-react` for cards/transactions data.
 - Do not import source files from another app directly.
+- The orchestrator should consume app entry contracts over remote origins in integration mode.
 - Reusable DTOs should come from `@jweichiem-mockup/shared-types`.
 - Shared server access should go through `@jweichiem-mockup/api-client` (or `api-react` for React apps).
 

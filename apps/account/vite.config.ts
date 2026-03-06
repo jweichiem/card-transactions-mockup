@@ -3,6 +3,11 @@ import react from '@vitejs/plugin-react';
 import { defineConfig } from 'vite';
 
 export default defineConfig({
+	server: {
+		port: 4173,
+		strictPort: true,
+		cors: true,
+	},
 	resolve: {
 		alias: {
 			'@jweichiem-mockup/shared-types': fileURLToPath(

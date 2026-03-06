@@ -10,12 +10,17 @@ React microfrontend for the account overview experience.
 
 ## Current Structure
 
-- `src/index.tsx`: app bootstrap and root render.
+- `src/index.tsx`: app bootstrap and root render (entry contract used by orchestrator remote loading).
 - `src/pages/Overview/index.tsx`: main screen composition and local UI state.
 - `src/components/`: app-specific components for the amount filter and transaction list.
 - `src/index.scss`: imports normalize and shared design-system styles.
 - `vite.config.ts`: Vite configuration.
 - `tsconfig*.json`: TypeScript project configuration split for app/node contexts.
+
+## Orchestrator Contract
+
+- Remote entry loaded by orchestrator: `/src/index.tsx`.
+- Expected host root element id: `account-overview`.
 
 ## Dependencies In Monorepo
 

@@ -8,8 +8,10 @@
 	],
 	"scripts": {
 		"dev:account": "yarn workspace @jweichiem-mockup/account dev",
+		"dev:navigation": "yarn workspace @jweichiem-mockup/navigation dev",
+		"dev:orchestrator": "yarn workspace @jweichiem-mockup/orchestrator dev",
 		"dev:api": "yarn workspace @jweichiem-mockup/api-server dev",
-		"dev": "concurrently -n account,api -c blue,green \"yarn dev:account\" \"yarn dev:api\"",
+		"dev": "concurrently -n orchestrator,account,navigation,api -c cyan,blue,magenta,green \"yarn dev:orchestrator\" \"yarn dev:account\" \"yarn dev:navigation\" \"yarn dev:api\"",
 		"build": "yarn workspaces run build",
 		"lint": "yarn workspaces run lint",
 		"test": "yarn workspaces run test"

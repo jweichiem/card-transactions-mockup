@@ -1,7 +1,9 @@
 # Banking Mockup
 
 This project currently runs as the original simplified mockup flow:
-- one frontend app (`apps/account`)
+- one orchestrator app (`apps/orchestrator`) for microfrontend composition
+- one account microfrontend (`apps/account`)
+- one navigation microfrontend (`apps/navigation`)
 - one mock API server (`packages/api-server`)
 - one shared UI package for design tokens/components (`packages/ui`)
 
@@ -16,16 +18,22 @@ yarn install
 yarn dev
 ```
 
-`yarn dev` starts both services:
-- account frontend (Vite): http://localhost:5173
+`yarn dev` starts all services:
+- orchestrator (Vite): http://localhost:4175
+- account microfrontend (Vite): http://localhost:4173
+- navigation microfrontend (Vite): http://localhost:4174
 - mock API server (Express): http://localhost:3001
 
-Open http://localhost:5173 in your browser.
+Open http://localhost:4175 in your browser.
+
+The orchestrator loads account/navigation over separate origins in dev to emulate fragment-style integration and surface CORS/runtime integration issues early.
 
 ## Optional commands
 
 ```bash
 yarn dev:account   # frontend only
+yarn dev:navigation # navigation microfrontend only
+yarn dev:orchestrator # composition host only
 yarn dev:api       # API only
 yarn build
 yarn lint
